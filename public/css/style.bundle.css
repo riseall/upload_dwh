@@ -485,7 +485,7 @@ pre {
   padding-right: 12.5px;
   padding-left: 12.5px;
   margin-right: auto;
-  margin-left: auto; }
+}
   @media (min-width: 576px) {
     .container {
       max-width: 540px; } }
@@ -58265,7 +58265,7 @@ body {
   .header-fixed .wrapper {
     padding-top: 65px; }
   .header-fixed.subheader-fixed.subheader-enabled .wrapper {
-    padding-top: 119px; }
+    padding-top: 65px; }
   .aside-fixed .wrapper {
     padding-left: 265px; }
   .aside-fixed.aside-minimize .wrapper {
