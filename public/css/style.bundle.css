@@ -485,7 +485,7 @@ pre {
   padding-right: 12.5px;
   padding-left: 12.5px;
   margin-right: auto;
-}
+  margin-left: auto;}
   @media (min-width: 576px) {
     .container {
       max-width: 540px; } }
@@ -511,23 +511,23 @@ pre {
 
 @media (min-width: 576px) {
   .container, .container-sm {
-    max-width: 540px; } }
+    max-width: 840px; } }
 
 @media (min-width: 768px) {
   .container, .container-sm, .container-md {
-    max-width: 720px; } }
+    max-width: 1020px; } }
 
 @media (min-width: 992px) {
   .container, .container-sm, .container-md, .container-lg {
-    max-width: 960px; } }
+    max-width: 1260px; } }
 
 @media (min-width: 1200px) {
   .container, .container-sm, .container-md, .container-lg, .container-xl {
-    max-width: 1140px; } }
+    max-width: 1440px; } }
 
 @media (min-width: 1400px) {
   .container, .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
-    max-width: 1340px; } }
+    max-width: 1640px; } }
 
 .row {
   display: -webkit-box;
@@ -2052,7 +2052,7 @@ pre {
   color: #464E5F;
   background-color: #ffffff;
   background-clip: padding-box;
-  border: 1px solid #E5EAEE;
+  border: 1px solid #77b4fa;
   border-radius: 0.42rem;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -2073,7 +2073,7 @@ pre {
   .form-control:focus {
     color: #464E5F;
     background-color: #ffffff;
-    border-color: #69b3ff;
+    border-color: #2f679c;
     outline: 0; }
   .form-control::-webkit-input-placeholder {
     color: #B5B5C3;
@@ -5586,7 +5586,7 @@ a.close.disabled {
 
 @media (min-width: 576px) {
   .modal-dialog {
-    max-width: 500px;
+    max-width: 650px;
     margin: 1.75rem auto; }
   .modal-dialog-scrollable {
     max-height: calc(100% - 3.5rem); }
@@ -5608,7 +5608,7 @@ a.close.disabled {
 @media (min-width: 992px) {
   .modal-lg,
   .modal-xl {
-    max-width: 800px; } }
+    max-width: 950px; } }
 
 @media (min-width: 1200px) {
   .modal-xl {
@@ -46084,7 +46084,7 @@ code {
   background-color: #ffffff; }
 
 .switch.switch-outline.switch-primary input:empty ~ span:before {
-  border: 2px solid #ECF0F3;
+  border: 2px solid #abd2ff;
   background-color: transparent; }
 
 .switch.switch-outline.switch-primary input:empty ~ span:after {
@@ -58278,7 +58278,9 @@ body {
     padding-top: 55px; }
   .container, .container-fluid, .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
     max-width: none;
-    padding: 0 15px; } }
+    padding: 0 15px; 
+    margin-top: 10px;
+  } }
 
 @media (min-width: 992px) {
   .header {
@@ -60734,3 +60736,7 @@ body {
 @media (max-width: 425px) {
   .offcanvas-mobile {
     width: 90% !important; } }
+
+.my-custom-icon .swal2-icon {
+  margin: 0 auto;
+}
