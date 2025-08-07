@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\MstCbgDistController;
+use App\Http\Controllers\MstCbgPHController;
+use App\Models\MstCbgPH;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,4 +24,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+// Route Master Cabang Distributor
+Route::resource('mst_cbg_dist', MstCbgDistController::class);
+
+require __DIR__ . '/auth.php';
