@@ -14,8 +14,4 @@ class MstCustDist extends Model
     protected $guarded = [
         'id'
     ];
-
-    protected $casts = [
-        'pasar' => 'array'
-    ];
 }
