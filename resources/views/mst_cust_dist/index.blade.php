@@ -3,7 +3,6 @@
     @include('layouts.partial.datatables', [
         'title' => 'Data Master',
         'subtitle' => 'Customer Distributor Phaspros',
-        'url' => route('mst_cust_dist.create'),
         'columns' => [
             'ID Outlet',
             'ID Cabang Distributor',

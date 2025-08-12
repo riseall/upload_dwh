@@ -38,22 +38,23 @@ Route::resource('mst_cbg_dist', MstCbgDistController::class)->except('show', 'cr
 Route::resource('mst_cbg_ph', MstCbgPHController::class)->except('show', 'create', 'store');
 // Route Master Customer Distributor Phapros
 Route::get('/mst_cust_dist/data', [MstCustDistController::class, 'getData'])->name('mst_cust_dist.data');
-Route::resource('mst_cust_dist', MstCustDistController::class)->only('index', 'create', 'store');
+Route::resource('mst_cust_dist', MstCustDistController::class)->only('index', 'store');
 // Route Data Target Operasional
-Route::resource('top_marketing', TopMarketingController::class)->only('index', 'create', 'store');
+Route::resource('top_marketing', TopMarketingController::class)->only('index', 'store');
 // Route Master Coverage AM
-Route::resource('mst_am', MstAMController::class)->only('index', 'create', 'store');
+Route::get('/mst_am/data', [MstAMController::class, 'getData'])->name('mst_am.data');
+Route::resource('mst_am', MstAMController::class)->only('index', 'store');
 // Route Master Coverage GM
-Route::resource('mst_gm', MstGMController::class)->only('index', 'create', 'store');
+Route::resource('mst_gm', MstGMController::class)->only('index', 'store');
 // Route Master Coverage MR
-Route::resource('mst_mr', MstMRController::class)->only('index', 'create', 'store');
+Route::resource('mst_mr', MstMRController::class)->only('index', 'store');
 // Route Master Coverage RM
-Route::resource('mst_rm', MstRMController::class)->only('index', 'create', 'store');
+Route::resource('mst_rm', MstRMController::class)->only('index', 'store');
 // Route Master Coverage SAM
-Route::resource('mst_sam', MstSAMController::class)->only('index', 'create', 'store');
+Route::resource('mst_sam', MstSAMController::class)->only('index', 'store');
 // Route Selling Out AME
-Route::resource('sell_out_ame', SellOutAMEController::class)->only('index', 'create', 'store');
+Route::resource('sell_out_ame', SellOutAMEController::class)->only('index', 'store');
 // Route Selling Out KME
-Route::resource('sell_out_kme', SellOutKMEController::class)->only('index', 'create', 'store');
+Route::resource('sell_out_kme', SellOutKMEController::class)->only('index', 'store');
 
 require __DIR__ . '/auth.php';

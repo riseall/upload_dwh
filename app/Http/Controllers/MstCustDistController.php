@@ -102,18 +102,4 @@ class MstCustDistController extends Controller
             return redirect()->route('mst_cust_dist.index')->with('error', 'Terjadi kesalahan saat memproses file: ' . $e->getMessage());
         }
     }
-
-    /**
-     * Membersihkan data yang sudah ada berdasarkan tipe data dan tanggal upload.
-     *
-     * @param string $uploadDate
-     * @return void
-     */
-    public function cleanData($uploadDate): void
-    {
-        $table = MstCustDist::where('upload_date', $uploadDate)->first();
-        if ($table) {
-            MstCustDist::where('upload_date', $uploadDate)->delete();
-        }
-    }
 }
