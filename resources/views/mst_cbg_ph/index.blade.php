@@ -14,7 +14,7 @@
                 </div>
                 <div class="card-body">
                     <!--begin: Datatable-->
-                    <table class="table table-separate table-head-custom table-striped table-hover datatable">
+                    <table class="table table-separate table-head-custom table-striped table-hover text-nowrap datatable">
                         <thead class="text-nowrap">
                             <tr class="text-center">
                                 <th>No.</th>
