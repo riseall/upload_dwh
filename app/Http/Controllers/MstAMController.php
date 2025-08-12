@@ -16,11 +16,11 @@ class MstAMController extends Controller
 
     public function getData(Request $request)
     {
-        // if ($request->ajax()) {
-        $query = MstAM::query();
-        return DataTables::of($query)->addIndexColumn()
-            ->make(true);
-        // }
+        if ($request->ajax()) {
+            $query = MstAM::query();
+            return DataTables::of($query)->addIndexColumn()
+                ->make(true);
+        }
     }
 
     public function store(Request $request)
@@ -34,13 +34,29 @@ class MstAMController extends Controller
             $file = fopen($path, 'r');
 
             $today = now()->toDateString();
-
             MstAM::whereDate('created_at', $today)->delete();
 
+            // Baca header terlebih dahulu dan buat pemetaan field
             $header = fgetcsv($file, 0, ';', '"');
-            $headerColumnCount = count($header);
-            $lineNumber = 1;
 
+            // Pemetaan dari nama field di CSV ke nama field di database
+            $csvToDbMapping = [
+                'nik_am' => 'am_nik',
+                'nik_sam' => 'sam_nik',
+                'nama_am' => 'nama_am',
+                'pilar' => 'pilar',
+                'subdiv' => 'subdiv',
+            ];
+
+            // Validasi header
+            $header = array_map('trim', $header); // Bersihkan spasi dari header
+            foreach (array_keys($csvToDbMapping) as $key) {
+                if (!in_array($key, $header)) {
+                    throw new \Exception("Header CSV tidak valid. Field {$key} tidak ditemukan.");
+                }
+            }
+
+            $lineNumber = 1;
             $validSubdivValues = ['REGULER', 'NON-REGULER'];
 
             DB::beginTransaction();
@@ -52,22 +68,25 @@ class MstAMController extends Controller
                     continue;
                 }
 
-                if (count($row) !== $headerColumnCount) {
-                    throw new \Exception("Kesalahan pada baris {$lineNumber}: Jumlah kolom tidak sesuai dengan header. Mohon periksa file csv anda.");
+                // Cek jumlah field
+                if (count($row) !== count($header)) {
+                    throw new \Exception("Kesalahan pada baris {$lineNumber}: Jumlah field tidak sesuai dengan header. Mohon periksa file csv anda.");
                 }
 
-                $subdivValue = trim($row[4]);
+                $mappedRow = array_combine($header, array_map('trim', $row));
 
+                // Validasi field 'subdiv'
+                $subdivValue = $mappedRow['subdiv'];
                 if (!in_array($subdivValue, $validSubdivValues)) {
-                    throw new \Exception("Kesalahan pada baris {$lineNumber}: Nilai kolom pasar tidak valid. Nilai yang diizinkan adalah REGULER atau NON-REGULER.");
+                    throw new \Exception("Kesalahan pada baris {$lineNumber}: Nilai field subdiv tidak valid. Nilai yang diizinkan adalah REGULER atau NON-REGULER.");
                 }
 
                 try {
                     MstAM::create([
-                        'am_nik' => trim($row[0]),
-                        'sam_nik' => trim($row[1]),
-                        'nama_am' => trim($row[2]),
-                        'pilar' => trim($row[3]),
+                        'am_nik' => $mappedRow['nik_am'],
+                        'sam_nik' => $mappedRow['nik_sam'],
+                        'nama_am' => $mappedRow['nama_am'],
+                        'pilar' => $mappedRow['pilar'],
                         'subdiv' => $subdivValue
                     ]);
                 } catch (\Exception $e) {

@@ -41,13 +41,35 @@ class MstCustDistController extends Controller
             $file = fopen($path, 'r');
 
             $today = now()->toDateString();
-
             MstCustDist::whereDate('created_at', $today)->delete();
 
             $header = fgetcsv($file, 0, ';', '"');
-            $headerColumnCount = count($header);
-            $lineNumber = 1;
 
+            // Pemetaan dari nama field di CSV ke nama field di database
+            $csvToDbMapping = [
+                'id_outlet' => 'id_outlet',
+                'id_cbg_dist' => 'id_cbg_dist',
+                'id_outlet_cbg' => 'id_outlet_cbg',
+                'nama_outlet' => 'nama_outlet',
+                'alamat_1' => 'alamat_1',
+                'alamat_2' => 'alamat_2',
+                'alamat_' => 'alamat_',
+                'no_telp' => 'no_telp',
+                'segment' => 'segment',
+                'pasar' => 'pasar',
+                'dist' => 'dist',
+            ];
+
+
+            // Validasi header
+            $header = array_map('trim', $header); // Bersihkan spasi dari header
+            foreach (array_keys($csvToDbMapping) as $key) {
+                if (!in_array($key, $header)) {
+                    throw new \Exception("Header CSV tidak valid. Field {$key} tidak ditemukan.");
+                }
+            }
+
+            $lineNumber = 1;
             $validPasarValues = ['REGULER', 'NON-REGULER'];
 
             DB::beginTransaction();
@@ -59,34 +81,32 @@ class MstCustDistController extends Controller
                     continue;
                 }
 
-                if (count($row) !== $headerColumnCount) {
-                    throw new \Exception("Kesalahan pada baris {$lineNumber}: Jumlah kolom tidak sesuai dengan header. Mohon periksa file csv anda.");
+                // Cek jumlah field
+                if (count($row) !== count($header)) {
+                    throw new \Exception("Kesalahan pada baris {$lineNumber}: Jumlah field tidak sesuai dengan header. Mohon periksa file csv anda.");
                 }
 
-                $pasarValue = trim($row[9]);
-                $telpValue = trim($row[7]);
+                $mappedRow = array_combine($header, array_map('trim', $row));
 
+                // Validasi field 'subdiv'
+                $pasarValue = $mappedRow['pasar'];
                 if (!in_array($pasarValue, $validPasarValues)) {
-                    throw new \Exception("Kesalahan pada baris {$lineNumber}: Nilai kolom pasar tidak valid. Nilai yang diizinkan adalah REGULER atau NON-REGULER.");
-                }
-
-                if (!is_numeric($telpValue)) {
-                    throw new \Exception("Kesalahan pada baris {$lineNumber}: Nilai kolom 'no_telp' harus berupa angka.");
+                    throw new \Exception("Kesalahan pada baris {$lineNumber}: Nilai field pasar tidak valid. Nilai yang diizinkan adalah REGULER atau NON-REGULER.");
                 }
 
                 try {
                     MstCustDist::create([
-                        'id_outlet'     => trim($row[0]),
-                        'id_cbg_dist'   => trim($row[1]),
-                        'id_outlet_cbg' => trim($row[2]),
-                        'nama_outlet'   => trim($row[3]),
-                        'alamat_1'      => trim($row[4]),
-                        'alamat_2'      => trim($row[5]),
-                        'alamat_3'      => trim($row[6]),
-                        'no_telp'       => $telpValue,
-                        'segment'       => trim($row[8]),
-                        'pasar'         => $pasarValue,
-                        'dist'          => trim($row[10]),
+                        'id_outlet' => $mappedRow['id_outlet'],
+                        'id_cbg_dist' => $mappedRow['id_cbg_dist'],
+                        'id_outlet_cbg' => $mappedRow['id_outlet_cbg'],
+                        'nama_outlet' => $mappedRow['nama_outlet'],
+                        'alamat_1' => $mappedRow['alamat_1'],
+                        'alamat_2' => $mappedRow['alamat_2'],
+                        'alamat_' => $mappedRow['alamat_'],
+                        'no_telp' => $mappedRow['no_telp'],
+                        'segment' => $mappedRow['segment'],
+                        'pasar' => $pasarValue,
+                        'dist' => $mappedRow['dist'],
                     ]);
                 } catch (\Exception $e) {
                     throw new \Exception("Kesalahan pada baris {$lineNumber}: " . $e->getMessage());
