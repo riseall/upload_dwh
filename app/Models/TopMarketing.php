@@ -10,4 +10,8 @@ class TopMarketing extends Model
     use HasFactory;
 
     protected $table = 'top_marketing';
+
+    protected $guarded = [
+        'id'
+    ];
 }
