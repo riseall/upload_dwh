@@ -79,10 +79,10 @@
             </form>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">
+            <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">
                 Close
             </button>
-            <button type="button" class="btn btn-primary font-weight-bold" id="updateBtn">
+            <button type="button" class="btn btn-success font-weight-bold" id="updateBtn">
                 Save Changes
             </button>
         </div>
