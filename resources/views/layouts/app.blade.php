@@ -230,6 +230,7 @@
     <script src="{{ asset('plugins/global/plugins.bundle.js') }}"></script>
     <script src="{{ asset('plugins/custom/prismjs/prismjs.bundle.js') }}"></script>
     <script src="{{ asset('js/scripts.bundle.js') }}"></script>
+    <script src="{{ asset('js/auto-logout-timer.js') }}"></script>
     {{-- <script src="{{ asset('js/sweet.js') }}"></script> --}}
     <!--end::Global Theme Bundle-->
     <!--begin::Page Vendors(used by this page)-->
