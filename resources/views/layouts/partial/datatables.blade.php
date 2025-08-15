@@ -17,8 +17,8 @@
     <div class="card-body">
         <table class="table table-separate table-head-custom table-striped table-hover text-nowrap datats">
             <thead>
-                <tr>
-                    <th>No.</th>
+                <tr class="text-center">
+                    <th style="width: 5%">No.</th>
                     @foreach ($columns as $column)
                         <th>{{ $column }}</th>
                     @endforeach
@@ -57,10 +57,10 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">
+                            <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">
                                 Close
                             </button>
-                            <button type="submit" class="btn btn-primary font-weight-bold" id="uploadFileBtn">
+                            <button type="submit" class="btn btn-success font-weight-bold" id="uploadFileBtn">
                                 Upload
                             </button>
                         </div>

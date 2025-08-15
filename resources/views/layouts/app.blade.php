@@ -89,15 +89,15 @@
             <div class="d-flex align-items-center mt-5">
                 <div class="symbol symbol-100 mr-5">
                     <span class="symbol symbol-75 symbol-light-success">
-                        <span class="symbol-label font-size-h2 font-weight-bold">S</span>
+                        <span
+                            class="symbol-label font-size-h2 font-weight-bold">{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</span>
                     </span>
                     <i class="symbol-badge bg-success"></i>
                 </div>
                 <div class="d-flex flex-column">
-                    <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">James
-                        Jones</a>
-                    <div class="text-muted mt-1">Application Developer</div>
-                    <div class="navi mt-2">
+                    <a href="#"
+                        class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">{{ Auth::user()->name }}</a>
+                    {{-- <div class="text-muted mt-1">Application Developer</div> --}} <div class="navi mt-2">
                         <a href="#" class="navi-item">
                             <span class="navi-link p-0 pb-2">
                                 <span class="navi-icon mr-1">
@@ -118,11 +118,22 @@
                                         <!--end::Svg Icon-->
                                     </span>
                                 </span>
-                                <span class="navi-text text-muted text-hover-primary">jm@softplus.com</span>
+                                <span class="navi-text text-muted text-hover-primary">
+                                    @if (Auth::user()->email)
+                                        {{ Auth::user()->email }}
+                                    @else
+                                        -
+                                    @endif
+                                </span>
                             </span>
                         </a>
-                        <a href="#" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Sign
+                        <a href="{{ route('logout') }}"
+                            class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign
                             Out</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                     </div>
                 </div>
             </div>
@@ -219,6 +230,7 @@
     <script src="{{ asset('plugins/global/plugins.bundle.js') }}"></script>
     <script src="{{ asset('plugins/custom/prismjs/prismjs.bundle.js') }}"></script>
     <script src="{{ asset('js/scripts.bundle.js') }}"></script>
+    <script src="{{ asset('js/auto-logout-timer.js') }}"></script>
     {{-- <script src="{{ asset('js/sweet.js') }}"></script> --}}
     <!--end::Global Theme Bundle-->
     <!--begin::Page Vendors(used by this page)-->
