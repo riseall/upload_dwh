@@ -247,3 +247,47 @@
     </div>
     <!--end::Aside Menu-->
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // ambil semua item menu
+        const menuItems = document.querySelectorAll('.menu-item');
+        // ambil url hal saat ini
+        const currentUrl = window.location.href;
+
+        menuItems.forEach(item => {
+
+            const link = item.querySelector('a');
+
+            if (link && currentUrl.includes(link.getAttribute('href'))) {
+                // Hapus class 'menu-item-submenu' dari semua item menu
+                menuItems.forEach(i => {
+                    i.classList.remove('menu-item-active');
+                });
+
+                // Tambahkan class 'active' ke item yang sesuai
+                item.classList.add('menu-item-active');
+
+                // Tambahkan logika untuk menu induk jika item ini adalah submenu
+                const parentSubMenu = item.closest('.menu-item-submenu');
+                if (parentSubMenu) {
+                    parentSubMenu.classList.add(
+                        'menu-item-open');
+                }
+            }
+
+            item.addEventListener('click', () => {
+                menuItems.forEach(item => {
+                    item.classList.remove('menu-item-active');
+                });
+
+                this.classList.add('menu-item-active');
+
+                // Tambahkan logika untuk menu induk jika item ini adalah submenu
+                const parentSubMenu = this.closest('.menu-item-submenu');
+                if (parentSubMenu) {
+                    parentSubMenu.classList.add('menu-item-open');
+                }
+            });
+        });
+    })
+</script>
