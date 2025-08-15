@@ -5,24 +5,28 @@
 <head>
     <base href="">
     <meta charset="utf-8" />
-    <title>Metronic | Dashboard</title>
+    <title>Upload | {{ $title }}</title>
     <meta name="description" content="Updates and statistics" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!--begin::Fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <!--end::Fonts-->
+    <!--begin::Page Vendors Styles(used by this page)-->
+    <link href="{{ asset('plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <!--end::Page Vendors Styles-->
     <!--begin::Global Theme Styles(used by all pages)-->
-    <link href="plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-    <link href="plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
-    <link href="css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('plugins/custom/prismjs/prismjs.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
     <!--end::Global Theme Styles-->
     <!--begin::Layout Themes(used by all pages)-->
-    <link href="css/layout/header/light.css" rel="stylesheet" type="text/css" />
-    <link href="css/layout/header/menu/light.css" rel="stylesheet" type="text/css" />
-    <link href="css/layout/brand/dark.css" rel="stylesheet" type="text/css" />
-    <link href="css/layout/aside/dark.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/layout/header/light.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/layout/header/menu/light.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/layout/brand/dark.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/layout/aside/dark.css') }}" rel="stylesheet" type="text/css" />
     <!--end::Layout Themes-->
-    <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+    {{-- <link rel="shortcut icon" href="assets/media/logos/favicon.ico" /> --}}
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -85,15 +89,15 @@
             <div class="d-flex align-items-center mt-5">
                 <div class="symbol symbol-100 mr-5">
                     <span class="symbol symbol-75 symbol-light-success">
-                        <span class="symbol-label font-size-h2 font-weight-bold">S</span>
+                        <span
+                            class="symbol-label font-size-h2 font-weight-bold">{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</span>
                     </span>
                     <i class="symbol-badge bg-success"></i>
                 </div>
                 <div class="d-flex flex-column">
-                    <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">James
-                        Jones</a>
-                    <div class="text-muted mt-1">Application Developer</div>
-                    <div class="navi mt-2">
+                    <a href="#"
+                        class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">{{ Auth::user()->name }}</a>
+                    {{-- <div class="text-muted mt-1">Application Developer</div> --}} <div class="navi mt-2">
                         <a href="#" class="navi-item">
                             <span class="navi-link p-0 pb-2">
                                 <span class="navi-icon mr-1">
@@ -114,11 +118,22 @@
                                         <!--end::Svg Icon-->
                                     </span>
                                 </span>
-                                <span class="navi-text text-muted text-hover-primary">jm@softplus.com</span>
+                                <span class="navi-text text-muted text-hover-primary">
+                                    @if (Auth::user()->email)
+                                        {{ Auth::user()->email }}
+                                    @else
+                                        -
+                                    @endif
+                                </span>
                             </span>
                         </a>
-                        <a href="#" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Sign
+                        <a href="{{ route('logout') }}"
+                            class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign
                             Out</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                     </div>
                 </div>
             </div>
@@ -212,10 +227,19 @@
     </script>
     <!--end::Global Config-->
     <!--begin::Global Theme Bundle(used by all pages)-->
-    <script src="plugins/global/plugins.bundle.js"></script>
-    <script src="plugins/custom/prismjs/prismjs.bundle.js"></script>
-    <script src="js/scripts.bundle.js"></script>
+    <script src="{{ asset('plugins/global/plugins.bundle.js') }}"></script>
+    <script src="{{ asset('plugins/custom/prismjs/prismjs.bundle.js') }}"></script>
+    <script src="{{ asset('js/scripts.bundle.js') }}"></script>
+    <script src="{{ asset('js/auto-logout-timer.js') }}"></script>
+    {{-- <script src="{{ asset('js/sweet.js') }}"></script> --}}
     <!--end::Global Theme Bundle-->
+    <!--begin::Page Vendors(used by this page)-->
+    <script src="{{ asset('plugins/custom/datatables/datatables.bundle.js') }}"></script>
+    <!--end::Page Vendors-->
+    <!--begin::Page Scripts(used by this page)-->
+    <script src="{{ asset('js/datatables.js') }}"></script>
+    <!--end::Page Scripts-->
+    @stack('scripts')
 </body>
 <!--end::Body-->
 
