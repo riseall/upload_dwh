@@ -21,7 +21,7 @@
                     </div>
                     <div class="col-lg-6">
                         <label for="username_edit">Username</label>
-                        <input id="username_edit" type="text" class="form-control" readonly placeholder="Username"
+                        <input id="username_edit" type="text" class="form-control" placeholder="Username"
                             name="username" />
                         <div class="invalid-feedback"></div>
                     </div>
