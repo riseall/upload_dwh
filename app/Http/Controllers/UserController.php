@@ -32,8 +32,8 @@ class UserController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:255',
-            'username' => 'required|string|max:255|unique:users',
-            'email' => 'required|string|email|max:255|unique:users',
+            'username' => 'required|string|max:255|unique:users_dwh',
+            'email' => 'required|string|email|max:255|unique:users_dwh',
             'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required|string|min:8',
             'role' => 'required|string|exists:roles,name',
@@ -82,8 +82,8 @@ class UserController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:255',
-            'username' => 'required|string|max:255|unique:users,username,' . $user->id,
-            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'username' => 'required|string|max:255|unique:users_dwh,username,' . $user->id,
+            'email' => 'required|string|email|max:255|unique:users_dwh,email,' . $user->id,
             'role' => 'required|string|exists:roles,name',
             'password' => 'nullable|string|min:8|confirmed',
             'is_active' => 'boolean',
