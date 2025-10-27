@@ -49,8 +49,31 @@ class LoginRequest extends FormRequest
 
         $user = User::where('username', $this->username)->first();
 
-        // cek username dan password
-        if (! $user || ! Hash::check($this->password, $user->password)) {
+        if (! $user) {
+            RateLimiter::hit($this->throttleKey());
+
+            throw ValidationException::withMessages([
+                'username' => trans('auth.failed'),
+            ]);
+        }
+
+        $inputPassword = $this->password;
+        $isValid = false;
+
+        // cek pakai bcrypt
+        if ($user->password && Hash::check($inputPassword, $user->password)) {
+            $isValid = true;
+        }
+        // cek pakai MD5
+        elseif ($user->password && md5($inputPassword) === $user->password) {
+            $isValid = true;
+
+            // update ke bcrypt
+            $user->password = Hash::make($inputPassword);
+            $user->save();
+        }
+
+        if (! $isValid) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
