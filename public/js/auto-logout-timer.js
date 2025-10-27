@@ -1,11 +1,11 @@
-const idleDuration = 1800;
+// const idleDuration = 1800;
 let timer;
-let secondLeft = idleDuration;
+// let secondLeft = idleDuration;
 
-function updateCountdown() {
-    document.getElementById("timer-countdown").innerText = secondLeft;
-    secondLeft--;
-}
+// function updateCountdown() {
+//     document.getElementById("timer-countdown").innerText = secondLeft;
+//     secondLeft--;
+// }
 
 function logOut() {
     clearTimeout(timer);
@@ -33,20 +33,20 @@ function logOut() {
     });
 }
 
-function resetTimer() {
-    secondLeft = idleDuration;
-    clearTimeout(timer);
-    timer = setInterval(function () {
-        updateCountdown();
-        if (secondLeft === 0) {
-            logOut();
-        }
-    }, 1000);
-}
+// function resetTimer() {
+//     secondLeft = idleDuration;
+//     clearTimeout(timer);
+//     timer = setInterval(function () {
+//         updateCountdown();
+//         if (secondLeft === 0) {
+//             logOut();
+//         }
+//     }, 1000);
+// }
 
-document.addEventListener("mousemove", resetTimer);
-document.addEventListener("keydown", resetTimer);
-document.addEventListener("click", resetTimer);
-document.addEventListener("scroll", resetTimer);
+// document.addEventListener("mousemove", resetTimer);
+// document.addEventListener("keydown", resetTimer);
+// document.addEventListener("click", resetTimer);
+// document.addEventListener("scroll", resetTimer);
 
-resetTimer();
+// resetTimer();
