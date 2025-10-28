@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MstAMController;
 use App\Http\Controllers\MstCbgDistController;
 use App\Http\Controllers\MstCbgPHController;
@@ -31,9 +32,7 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/dashboard', function () {
-        return view('welcome');
-    })->name('wel');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('wel');
 
     Route::resource('users', UserController::class)->except('show', 'destroy');
     // Route Master Cabang Distributor
