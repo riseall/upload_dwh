@@ -97,7 +97,8 @@
                 <div class="d-flex flex-column">
                     <a href="#"
                         class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">{{ Auth::user()->name }}</a>
-                    {{-- <div class="text-muted mt-1">Application Developer</div> --}} <div class="navi mt-2">
+                    <div class="text-dark-50 font-weight-bold mt-1">{{ Auth::user()->jabatan->nama_jabatan }}</div>
+                    <div class="navi mt-2">
                         <a href="#" class="navi-item">
                             <span class="navi-link p-0 pb-2">
                                 <span class="navi-icon mr-1">
@@ -128,7 +129,7 @@
                             </span>
                         </a>
                         <a href="{{ route('logout') }}"
-                            class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5"
+                            class="btn btn-sm btn-light-danger font-weight-bolder py-2 px-5"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign
                             Out</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
