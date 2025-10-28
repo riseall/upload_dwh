@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Spatie\Permission\Models\Role;
 
 class LoginRequest extends FormRequest
 {
@@ -93,6 +94,20 @@ class LoginRequest extends FormRequest
         }
 
         Auth::login($user, $this->boolean('remember'));
+
+        // Cek apakah user sudah punya role
+        if (! $user->roles()->exists()) {
+
+            $defaultRole = 'mi';
+
+            // pastikan role tersebut sudah ada di DB
+            if (!Role::where('name', $defaultRole)->exists()) {
+                Role::create(['name' => $defaultRole]);
+            }
+
+            // assign role default
+            $user->assignRole($defaultRole);
+        }
 
         RateLimiter::clear($this->throttleKey());
     }

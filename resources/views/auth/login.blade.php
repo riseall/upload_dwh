@@ -21,7 +21,8 @@
                             @csrf
                             <!--begin::Title-->
                             <div class="text-center pb-8">
-                                <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">Sign In - Upload DWH
+                                <h2 class="font-weight-bolder text-primary font-size-h2 font-size-h1-lg">Sign In - Upload
+                                    DWH
                                 </h2>
                                 <p class="text-muted font-weight-bold">Masukkan nik dan password anda</p>
                             </div>
