@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Auth;
 
 use App\Models\User;
+use App\Rules\ReCaptcha;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -33,6 +34,7 @@ class LoginRequest extends FormRequest
         return [
             'username' => ['required', 'string', 'exists:users_dwh,username'],
             'password' => ['required', 'string'],
+            'g-recaptcha-response' => ['required', new ReCaptcha],
         ];
     }
 

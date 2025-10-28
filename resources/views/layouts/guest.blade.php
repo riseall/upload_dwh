@@ -19,6 +19,7 @@
     <link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
     <!--end::Global Theme Styles-->
     {{-- <link rel="shortcut icon" href="assets/media/logos/favicon.ico" /> --}}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <!--end::Head-->
 <!--begin::Body-->
