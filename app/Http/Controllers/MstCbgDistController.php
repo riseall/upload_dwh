@@ -47,13 +47,13 @@ class MstCbgDistController extends Controller
         $validator = Validator::make($request->all(), [
             'id_cbg_ph' => 'required|string|max:255',
             'kode_cbg_dist' => 'required|string|max:255',
-            'nama_cbg' => 'nullable|string|max:255',
+            'nama_cbg' => 'nullable|string|max:100',
             'branch_address' => 'nullable|string|max:255',
-            'city' => 'nullable|string|max:255',
-            'province' => 'nullable|string|max:255',
-            'postal_code' => 'nullable|string|max:255',
-            'phone_number' => 'nullable|string|max:255',
-            'email' => 'nullable|email|max:255',
+            'city' => 'nullable|string|max:50',
+            'province' => 'nullable|string|max:50',
+            'postal_code' => 'nullable|string|max:10',
+            'phone_number' => 'nullable|string|max:20',
+            'email' => 'nullable|email|max:100',
             'dist' => 'nullable|string|max:255',
         ]);
 

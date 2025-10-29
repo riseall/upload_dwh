@@ -44,14 +44,14 @@ class MstCbgPHController extends Controller
 
         // Jalankan validasi
         $validator = Validator::make($request->all(), [
-            'id_cbg_ph' => 'required|string|max:255',
-            'nama_cbg' => 'nullable|string|max:255',
-            'branch_address' => 'nullable|string|max:255',
-            'city' => 'nullable|string|max:255',
-            'province' => 'nullable|string|max:255',
-            'postal_code' => 'nullable|string|max:255',
-            'phone_number' => 'nullable|string|max:255',
-            'email' => 'nullable|email|max:255',
+            'nama_cbg' => 'nullable|string|max:100',
+            'region' => 'nullable|string|max:50',
+            'branch_address' => 'nullable|string|max:50',
+            'city' => 'nullable|string|max:50',
+            'province' => 'nullable|string|max:50',
+            'postal_code' => 'nullable|string|max:10',
+            'phone_number' => 'nullable|string|max:20',
+            'email' => 'nullable|email|max:100',
         ]);
 
         if ($validator->fails()) {
@@ -62,8 +62,8 @@ class MstCbgPHController extends Controller
         }
 
         // Update data jika validasi berhasil
-        $cbgPH->id_cbg_ph = $request->id_cbg_ph;
         $cbgPH->nama_cbg = $request->nama_cbg;
+        $cbgPH->region = $request->region;
         $cbgPH->branch_address = $request->branch_address;
         $cbgPH->city = $request->city;
         $cbgPH->province = $request->province;
