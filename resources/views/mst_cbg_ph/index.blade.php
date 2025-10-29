@@ -84,10 +84,11 @@
             // Ketika tombol edit diklik
             $(document).on('click', '.edit-btn', function() {
                 var itemId = $(this).data('id');
+                let url = '{{ route('mst_cbg_ph.edit', ':itemId') }}'.replace(':itemId', itemId);
                 // Ambil data item dari server menggunakan AJAX
                 $.ajax({
                     type: 'GET',
-                    url: '/mst_cbg_ph/' + itemId + '/edit',
+                    url: url,
                     success: function(response) {
                         if (response.status === 200) {
                             // Mengisi form modal dengan data yang diterima dari controller
@@ -133,6 +134,7 @@
             $('#updateBtn').click(function() {
                 var itemId = $('#edit_item_id').val();
                 var formData = $('#formMstCbgPh').serialize();
+                let url = '{{ route('mst_cbg_ph.update', ':itemId') }}'.replace(':itemId', itemId);
 
                 $.ajaxSetup({
                     headers: {
@@ -142,7 +144,7 @@
 
                 $.ajax({
                     type: 'PUT',
-                    url: '/mst_cbg_ph/' + itemId,
+                    url: url,
                     data: formData,
                     success: function(response) {
                         // Notifikasi sukses (kode status 200)
@@ -194,6 +196,7 @@
 
             $(document).on('click', '.delete-btn', function() {
                 var itemId = $(this).data('id');
+                let url = '{{ route('mst_cbg_ph.destroy', ':itemId') }}'.replace(':itemId', itemId);
 
                 Swal.fire({
                     title: 'Apakah Anda yakin?',
@@ -216,7 +219,7 @@
                         });
 
                         $.ajax({
-                            url: '/mst_cbg_ph/' + itemId,
+                            url: url,
                             type: 'DELETE',
                             success: function(response) {
                                 if (response.status === 200) {

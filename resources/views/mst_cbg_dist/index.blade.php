@@ -106,11 +106,12 @@
         $(document).ready(function() {
             // Ketika tombol edit diklik
             $(document).on('click', '.edit-btn', function() {
-                var itemId = $(this).data('id');
+                let itemId = $(this).data('id');
+                let url = '{{ route('mst_cbg_dist.edit', ':itemId') }}'.replace(':itemId', itemId);
                 // Ambil data item dari server menggunakan AJAX
                 $.ajax({
+                    url: url,
                     type: 'GET',
-                    url: '/mst_cbg_dist/' + itemId + '/edit',
                     success: function(response) {
                         if (response.status === 200) {
                             // Mengisi form modal dengan data yang diterima dari controller
@@ -158,6 +159,7 @@
             $('#updateBtn').click(function() {
                 var itemId = $('#edit_item_id').val();
                 var formData = $('#formMstCbgDist').serialize();
+                let url = '{{ route('mst_cbg_dist.update', ':itemId') }}'.replace(':itemId', itemId);
 
                 $.ajaxSetup({
                     headers: {
@@ -167,7 +169,7 @@
 
                 $.ajax({
                     type: 'PUT',
-                    url: '/mst_cbg_dist/' + itemId,
+                    url: url,
                     data: formData,
                     success: function(response) {
                         // Notifikasi sukses (kode status 200)
@@ -219,6 +221,7 @@
 
             $(document).on('click', '.delete-btn', function() {
                 var itemId = $(this).data('id');
+                let url = '{{ route('mst_cbg_dist.destroy', ':itemId') }}'.replace(':itemId', itemId);
 
                 Swal.fire({
                     title: 'Apakah Anda yakin?',
@@ -241,7 +244,7 @@
                         });
 
                         $.ajax({
-                            url: '/mst_cbg_dist/' + itemId,
+                            url: url,
                             type: 'DELETE',
                             success: function(response) {
                                 if (response.status === 200) {
