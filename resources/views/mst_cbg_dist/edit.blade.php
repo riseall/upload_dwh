@@ -31,7 +31,7 @@
                 </div>
                 <div class="form-group">
                     <label for="branch_address">Alamat Cabang</label>
-                    <textarea id="branch_address" class="form-control" rows="3" name="branch_address"></textarea>
+                    <textarea id="branch_address" class="form-control" rows="3" name="branch_address" placeholder="Alamat Cabang"></textarea>
                 </div>
                 <div class="form-group row">
                     <div class="col-lg-4">
@@ -60,6 +60,11 @@
                         <input id="email" type="text" class="form-control" placeholder="Email" name="email" />
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="dist">Distributor</label>
+                    <input id="dist" type="text" class="form-control" placeholder="Distributor"
+                        name="dist" />
+                </div>
                 <div class="form-group row">
                     <label class="col-2 col-form-label">Active</label>
                     <div class="col-2">
@@ -70,11 +75,6 @@
                             </label>
                         </span>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="dist">Distributor</label>
-                    <input id="dist" type="text" class="form-control" placeholder="Distributor"
-                        name="dist" />
                 </div>
             </form>
         </div>

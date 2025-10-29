@@ -18,8 +18,8 @@
                         <thead class="text-nowrap">
                             <tr class="text-center">
                                 <th>No.</th>
-                                <th>ID Cabang PH</th>
                                 <th>Nama Cabang</th>
+                                <th>Region</th>
                                 <th>Alamat Cabang</th>
                                 <th>Kota</th>
                                 <th>Provinsi</th>
@@ -34,8 +34,8 @@
                             @foreach ($cbgPH as $item)
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}.</td>
-                                    <td>{{ $item->id_cbg_ph }}</td>
                                     <td>{{ $item->nama_cbg }}</td>
+                                    <td>{{ $item->region }}</td>
                                     <td>{{ $item->branch_address }}</td>
                                     <td>{{ $item->city }}</td>
                                     <td>{{ $item->province }}</td>
@@ -52,10 +52,11 @@
                                     </td>
                                     <td class="d-flex justify-content-center text-center">
                                         {{-- Tombol Aksi --}}
-                                        <button class="btn btn-sm btn-warning mr-2 edit-btn" data-id="{{ $item->id }}">
+                                        <button class="btn btn-sm btn-warning mr-2 edit-btn"
+                                            data-id="{{ $item->id_cbg_ph }}">
                                             <i class="far fa-edit icon-md"></i>
                                         </button>
-                                        <button class="btn btn-sm btn-danger delete-btn" data-id="{{ $item->id }}">
+                                        <button class="btn btn-sm btn-danger delete-btn" data-id="{{ $item->id_cbg_ph }}">
                                             <i class="far fa-trash-alt icon-md"></i>
                                         </button>
                                     </td>
@@ -92,9 +93,9 @@
                     success: function(response) {
                         if (response.status === 200) {
                             // Mengisi form modal dengan data yang diterima dari controller
-                            $('#edit_item_id').val(response.cbgPH.id);
-                            $('#id_cbg_ph').val(response.cbgPH.id_cbg_ph);
+                            $('#edit_item_id').val(response.cbgPH.id_cbg_ph);
                             $('#nama_cbg').val(response.cbgPH.nama_cbg);
+                            $('#region').val(response.cbgPH.region);
                             $('#branch_address').val(response.cbgPH.branch_address);
                             $('#city').val(response.cbgPH.city);
                             $('#province').val(response.cbgPH.province);

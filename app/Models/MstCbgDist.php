@@ -12,6 +12,10 @@ class MstCbgDist extends Model
 
     protected $table = 'mst_cbg_dist';
 
+    protected $primaryKey = 'id_cbg_dist';
+
+    public $incrementing = true;
+
     protected $guarded = [
         'id'
     ];

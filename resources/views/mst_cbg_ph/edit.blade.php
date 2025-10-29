@@ -14,19 +14,19 @@
                 <input type="hidden" id="edit_item_id" name="id">
                 <div class="form-group row">
                     <div class="col-lg-6">
-                        <label for="id_cbg_ph">ID Cabang Phapros</label>
-                        <input id="id_cbg_ph" type="text" class="form-control" readonly placeholder="ID Cabang PH"
-                            name="id_cbg_ph" />
-                    </div>
-                    <div class="col-lg-6">
                         <label for="nama_cbg">Nama Cabang</label>
                         <input id="nama_cbg" type="text" class="form-control" placeholder="Nama Cabang"
                             name="nama_cbg" />
                     </div>
+                    <div class="col-lg-6">
+                        <label for="region">Region</label>
+                        <input id="region" type="text" class="form-control" readonly placeholder="Region"
+                            name="region" />
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="branch_address">Alamat Cabang</label>
-                    <textarea id="branch_address" class="form-control" rows="3" name="branch_address"></textarea>
+                    <textarea id="branch_address" class="form-control" rows="3" name="branch_address" placeholder="Alamat Cabang"></textarea>
                 </div>
                 <div class="form-group row">
                     <div class="col-lg-4">

@@ -46,8 +46,8 @@
                                 <th>Kode Pos</th>
                                 <th>No. Telepon</th>
                                 <th>Email</th>
-                                <th>Status</th>
                                 <th>Distributor</th>
+                                <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -64,6 +64,7 @@
                                     <td>{{ $cbgDist->postal_code }}</td>
                                     <td>{{ $cbgDist->phone_number }}</td>
                                     <td>{{ $cbgDist->email }}</td>
+                                    <td>{{ $cbgDist->dist }}</td>
                                     <td class="text-nowrap text-center">
                                         @if ($cbgDist->is_active)
                                             <span class="label label-light-success label-inline label-bold">Aktif</span>
@@ -72,13 +73,14 @@
                                                 Aktif</span>
                                         @endif
                                     </td>
-                                    <td>{{ $cbgDist->dist }}</td>
                                     <td class="d-flex justify-content-center text-center">
                                         {{-- Tombol Aksi --}}
-                                        <button class="btn btn-sm btn-warning mr-2 edit-btn" data-id="{{ $cbgDist->id }}">
+                                        <button class="btn btn-sm btn-warning mr-2 edit-btn"
+                                            data-id="{{ $cbgDist->id_cbg_dist }}">
                                             <i class="far fa-edit icon-md"></i>
                                         </button>
-                                        <button class="btn btn-sm btn-danger delete-btn" data-id="{{ $cbgDist->id }}">
+                                        <button class="btn btn-sm btn-danger delete-btn"
+                                            data-id="{{ $cbgDist->id_cbg_dist }}">
                                             <i class="far fa-trash-alt icon-md"></i>
                                         </button>
                                     </td>
@@ -109,13 +111,15 @@
                 let itemId = $(this).data('id');
                 let url = '{{ route('mst_cbg_dist.edit', ':itemId') }}'.replace(':itemId', itemId);
                 // Ambil data item dari server menggunakan AJAX
+
+                console.log(itemId);
                 $.ajax({
                     url: url,
                     type: 'GET',
                     success: function(response) {
                         if (response.status === 200) {
                             // Mengisi form modal dengan data yang diterima dari controller
-                            $('#edit_item_id').val(response.cbgDist.id);
+                            $('#edit_item_id').val(response.cbgDist.id_cbg_dist);
                             $('#id_cbg_ph').val(response.cbgDist.id_cbg_ph);
                             $('#kode_cbg_dist').val(response.cbgDist.kode_cbg_dist);
                             $('#nama_cbg').val(response.cbgDist.nama_cbg);

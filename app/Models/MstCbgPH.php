@@ -12,6 +12,10 @@ class MstCbgPH extends Model
 
     protected $table = 'mst_cbg_ph';
 
+    protected $primaryKey = 'id_cbg_ph';
+
+    public $incrementing = true;
+
     protected $guarded = [
         'id'
     ];
