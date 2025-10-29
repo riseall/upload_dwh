@@ -34,11 +34,15 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('wel');
 
-    Route::resource('users', UserController::class)->except('show', 'destroy');
+    Route::group(['middleware' => ['auth', 'role:admin']], function () {
+        Route::resource('users', UserController::class)->except('show', 'destroy');
+    });
     // Route Master Cabang Distributor
-    Route::resource('mst_cbg_dist', MstCbgDistController::class)->except('show', 'create', 'store');
-    // Route Master Cabang Phapros
-    Route::resource('mst_cbg_ph', MstCbgPHController::class)->except('show', 'create', 'store');
+    Route::group(['middleware' => ['auth', 'role:admin|opti']], function () {
+        Route::resource('mst_cbg_dist', MstCbgDistController::class)->except('show', 'create', 'store');
+        // Route Master Cabang Phapros
+        Route::resource('mst_cbg_ph', MstCbgPHController::class)->except('show', 'create', 'store');
+    });
     // Route Master Customer Distributor Phapros
     Route::get('/mst_cust_dist/data', [MstCustDistController::class, 'getData'])->name('mst_cust_dist.data');
     Route::resource('mst_cust_dist', MstCustDistController::class)->only('index', 'store');

@@ -3,7 +3,7 @@
     <h2 class="card-label"> Selamat Datang, <strong> {{ Auth::user()->name }}!</strong></h2>
 
     <div class="row mt-5">
-        @hasanyrole(['admin', 'opti'])
+        @hasrole('admin')
             <div class="col-xl-3">
                 <a href="{{ route('mst_cbg_dist.index') }}">
                     <!--begin::Stats Widget 29-->
@@ -33,6 +33,8 @@
                 </a>
                 <!--end::Stats Widget 29-->
             </div>
+        @endhasrole
+        @hasanyrole(['admin', 'opti'])
             <div class="col-xl-3">
                 <a href="{{ route('mst_cbg_dist.index') }}">
                     <!--begin::Stats Widget 29-->
