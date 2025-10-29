@@ -7,13 +7,41 @@
             <div class="col-xl-3">
                 <a href="{{ route('mst_cbg_dist.index') }}">
                     <!--begin::Stats Widget 29-->
-                    <div class="card card-custom bgi-no-repeat bg-hover-state-secondary card-stretch gutter-b"
-                        style="background-position: right top; background-size: 30% auto;">
-                        <!--begin::Body-->
+                    <div class="card card-custom bg-purple bg-hover-info-o-5 card-stretch gutter-b" <!--begin::Body-->
                         <div class="card-body">
-                            <span class="svg-icon svg-icon-2x svg-icon-info">
+                            <span class="svg-icon svg-icon-2x svg-icon-white">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
                                     height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <polygon points="0 0 24 0 24 24 0 24" />
+                                        <path
+                                            d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z"
+                                            fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                                        <path
+                                            d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z"
+                                            fill="#000000" fill-rule="nonzero" />
+                                    </g>
+                                </svg>
+                                <!--end::Svg Icon-->
+                            </span>
+                            <span
+                                class="card-title font-weight-bolder text-white font-size-h2 mb-0 mt-6 d-block">{{ $user }}</span>
+                            <span class="font-weight-bold text-white font-size-sm">Master User</span>
+                        </div>
+                        <!--end::Body-->
+                    </div>
+                </a>
+                <!--end::Stats Widget 29-->
+            </div>
+            <div class="col-xl-3">
+                <a href="{{ route('mst_cbg_dist.index') }}">
+                    <!--begin::Stats Widget 29-->
+                    <div class="card card-custom bg-blue bg-hover-primary-o-2 card-stretch gutter-b">
+                        <!--begin::Body-->
+                        <div class="card-body">
+                            <span class="svg-icon svg-icon-2x svg-icon-dark">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                         <rect x="0" y="0" width="24" height="24" />
                                         <path
@@ -39,7 +67,7 @@
             <div class="col-xl-3">
                 <a href="{{ route('mst_cbg_ph.index') }}">
                     <!--begin::Stats Widget 30-->
-                    <div class="card card-custom bg-info bg-hover-state-info card-stretch gutter-b">
+                    <div class="card card-custom bg-danger bg-hover-state-danger card-stretch gutter-b">
                         <!--begin::Body-->
                         <div class="card-body">
                             <span class="svg-icon svg-icon-2x svg-icon-white">
@@ -71,7 +99,7 @@
         <div class="col-xl-3">
             <a href="{{ route('mst_cust_dist.index') }}">
                 <!--begin::Stats Widget 31-->
-                <div class="card card-custom bg-danger bg-hover-state-danger card-stretch gutter-b">
+                <div class="card card-custom bg-success bg-hover-state-success card-stretch gutter-b">
                     <!--begin::Body-->
                     <div class="card-body">
                         <span class="svg-icon svg-icon-2x svg-icon-white">
@@ -102,10 +130,10 @@
         <div class="col-xl-3">
             <a href="{{ route('mst_am.index') }}">
                 <!--begin::Stats Widget 32-->
-                <div class="card card-custom bg-dark bg-hover-state-dark card-stretch gutter-b">
+                <div class="card card-custom bg-light bg-hover-state-light card-stretch gutter-b">
                     <!--begin::Body-->
                     <div class="card-body">
-                        <span class="svg-icon svg-icon-2x svg-icon-white">
+                        <span class="svg-icon svg-icon-2x svg-icon-dark">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Group-chat.svg-->
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                 width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -123,8 +151,8 @@
                             </svg> <!--end::Svg Icon-->
                         </span>
                         <span
-                            class="card-title font-weight-bolder text-white font-size-h2 mb-0 mt-6 d-block">{{ $cov_am }}</span>
-                        <span class="font-weight-bold text-white font-size-sm">Coverage AM</span>
+                            class="card-title font-weight-bolder text-dark-50 font-size-h2 mb-0 mt-6 d-block">{{ $cov_am }}</span>
+                        <span class="font-weight-bold text-dark-50 font-size-sm">Coverage AM</span>
                     </div>
                     <!--end::Body-->
                 </div>
@@ -135,10 +163,10 @@
         <div class="col-xl-3">
             <a href="{{ route('mst_gm.index') }}">
                 <!--begin::Stats Widget 25-->
-                <div class="card card-custom bg-light-success bg-hover-success-o-2 card-stretch gutter-b">
+                <div class="card card-custom bg-pink bg-hover-danger-o-2 card-stretch gutter-b">
                     <!--begin::Body-->
                     <div class="card-body">
-                        <span class="svg-icon svg-icon-2x svg-icon-success">
+                        <span class="svg-icon svg-icon-2x svg-icon-dark">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Mail-opened.svg-->
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                 width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -168,10 +196,10 @@
         <div class="col-xl-3">
             <a href="{{ route('mst_mr.index') }}">
                 <!--begin::Stats Widget 26-->
-                <div class="card card-custom bg-light-danger bg-hover-danger-o-2 card-stretch gutter-b">
+                <div class="card card-custom bg-emerald bg-hover-success-o-2 card-stretch gutter-b">
                     <!--begin::ody-->
                     <div class="card-body">
-                        <span class="svg-icon svg-icon-2x svg-icon-danger">
+                        <span class="svg-icon svg-icon-2x svg-icon-dark">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Group.svg-->
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                 width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -201,10 +229,10 @@
         <div class="col-xl-3">
             <a href="{{ route('mst_rm.index') }}">
                 <!--begin::Stats Widget 27-->
-                <div class="card card-custom bg-light-info bg-hover-info-o-2 card-stretch gutter-b">
+                <div class="card card-custom bg-dark bg-hover-state-dark card-stretch gutter-b">
                     <!--begin::Body-->
                     <div class="card-body">
-                        <span class="svg-icon svg-icon-2x svg-icon-info">
+                        <span class="svg-icon svg-icon-2x svg-icon-white">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/Media/Equalizer.svg-->
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                 width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -223,8 +251,8 @@
                             <!--end::Svg Icon-->
                         </span>
                         <span
-                            class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block">{{ $cov_rm }}</span>
-                        <span class="font-weight-bold text-dark-50 font-size-sm">Coverage RM</span>
+                            class="card-title font-weight-bolder text-white font-size-h2 mb-0 mt-6 d-block">{{ $cov_rm }}</span>
+                        <span class="font-weight-bold text-white font-size-sm">Coverage RM</span>
                     </div>
                     <!--end::Body-->
                 </div>
@@ -234,10 +262,10 @@
         <div class="col-xl-3">
             <a href="{{ route('mst_sam.index') }}">
                 <!--begin::Stats Widget 28-->
-                <div class="card card-custom bg-light-warning bg-hover-warning-o-2 card-stretch gutter-b">
+                <div class="card card-custom bg-primary bg-hover-state-primary card-stretch gutter-b">
                     <!--begin::Body-->
                     <div class="card-body">
-                        <span class="svg-icon svg-icon-2x svg-icon-warning">
+                        <span class="svg-icon svg-icon-2x svg-icon-white">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Group-chat.svg-->
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                 width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -256,8 +284,8 @@
                             <!--end::Svg Icon-->
                         </span>
                         <span
-                            class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block">{{ $cov_sam }}</span>
-                        <span class="font-weight-bold text-dark-50 font-size-sm">Coverage SAM</span>
+                            class="card-title font-weight-bolder text-white font-size-h2 mb-0 mt-6 d-block">{{ $cov_sam }}</span>
+                        <span class="font-weight-bold text-white font-size-sm">Coverage SAM</span>
                     </div>
                     <!--end::Body-->
                 </div>
@@ -267,7 +295,7 @@
         <div class="col-xl-3">
             <a href="{{ route('top_marketing.index') }}">
                 <!--begin::Stats Widget 32-->
-                <div class="card card-custom bg-primary bg-hover-state-primary card-stretch gutter-b">
+                <div class="card card-custom bg-warning bg-hover-state-warning card-stretch gutter-b">
                     <!--begin::Body-->
                     <div class="card-body">
                         <span class="svg-icon svg-icon-2x svg-icon-white">

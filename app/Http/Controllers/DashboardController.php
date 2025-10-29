@@ -8,6 +8,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        $user = DB::table('users_dwh')->count();
         $cbg_dist = DB::table('mst_cbg_dist')->Count();
         $cbg_ph = DB::table('mst_cbg_ph')->Count();
         $cust_dist = DB::table('mst_cust_dist')->count();
@@ -18,6 +19,6 @@ class DashboardController extends Controller
         $cov_sam = DB::table('mst_sam')->Count();
         $top = DB::table('top_marketing')->count();
 
-        return view('welcome', compact('cbg_dist', 'cbg_ph', 'cust_dist', 'cov_am', 'cov_gm', 'cov_mr', 'cov_rm', 'cov_sam', 'top'));
+        return view('welcome', compact('user', 'cbg_dist', 'cbg_ph', 'cust_dist', 'cov_am', 'cov_gm', 'cov_mr', 'cov_rm', 'cov_sam', 'top'));
     }
 }
